@@ -3,6 +3,10 @@
 #
 # Michael Schlueter				15.2.2000	3.00
 
+
+# 3.02:
+#	No changes in here				06.07.2000
+
 # 3.01:
 #	introduced get_h_.._at($key) for direct access of internal hash
 #	19.5.2000
@@ -13,7 +17,7 @@
 
 package Class::Classgen::Attribute;
 
-$VERSION=3.01;
+$VERSION=3.02;
 
 	use strict;
 	use Class::Classgen::Comments;
@@ -353,7 +357,7 @@ Attribute.pm - generates all get- and set-methods for new classes created by cla
 
 =head1 VERSION
 
-3.01
+3.02
 
 =head1 SYNOPSIS
 

@@ -1,9 +1,12 @@
 #!/usr/bin/perl -w
 
-my $VERSION='3.01';
+my $VERSION='3.02';
 
 	use strict;
 #	use diagnostics;
+
+# 3.02:
+#	No changes in here				06.07.2000
 
 # 3.01:
 #	Comments::just_var() had a minor return-bug; led to suppressing
@@ -304,7 +307,7 @@ classgen - generates class from a control file.
 
 =head1 VERSION
 
-3.01
+3.02
 
 =head1 SYNOPSIS
 

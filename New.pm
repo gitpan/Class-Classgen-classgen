@@ -1,6 +1,12 @@
 package Class::Classgen::New;
 
-$VERSION=3.01;
+$VERSION=3.02;
+
+# 3.02  Thu Jun 06 2000
+#	- according to lieting@mailconcept.com using a variable $type
+#	  in the control file gets confused with the internal variable
+#	  my $type = ref($self)||$self;  in the constructor new().
+#	  This problem has been corrected.
 
 	use strict;
 	use Class::Classgen::Comments;			# to remove problems by typing errors
@@ -88,7 +94,7 @@ sub write_code {
 	
 	$s = "sub new {\n";
 	$s.= "\tmy (\$self) = \@_;\n";
-	$s.= "\tmy \$type = ref(\$self)||\$self;\n";
+#	$s.= "\tmy \$type = ref(\$self)||\$self;\n";	# 3.01 -> 3.02
 
 	$s.= "\n\t\# instance-variables:\n";
 
@@ -99,7 +105,8 @@ sub write_code {
 	
 	$v = $self->write_blessing();
 	
-	$w = "\t}, \$type;\n";
+#	$w = "\t}, \$type;\n";				# 3.01
+	$w = "\t}, ref(\$self)||\$self;\n";		# 3.01 -> 3.02
 
 	# to put in some default code which supports inheritance
 	$w.= "\t\#\$self->inherit_from(\$self->your_base::new());";

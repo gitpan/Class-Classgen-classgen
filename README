@@ -1,4 +1,4 @@
-Classgen-3.01						(5/2000)
+Classgen-3.02						(5/2000)
 
 
 Simplifies creation, manipulation and usage of complex objects.
@@ -30,6 +30,15 @@ generated object for inheritance from base-classes.
 
 
 In the spirit of UML,
-
 Michael Schlueter	email: mschlue@cpan.org
 
+------------------------------------------------------------------------
+
+Feedback given on Classgen-3.01:
+
+Hi, Michael,
+ 
+Thanks for the wonderful "classgen" utility, it saves
+me a lot of typing. (...)
+
+Lieting Yu (lieting@mailconcept.com)   28.6.2000

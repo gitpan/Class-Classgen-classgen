@@ -1,5 +1,12 @@
 Revision history for Perl extension Class::Classgen.
 
+3.02  Thu Jun 06 2000
+	- according to lieting@mailconcept.com using a variable $type
+	  in the control file gets confused with the internal variable
+	  my $type = ref($self)||$self;  in the constructor new().
+	  This problem has been corrected in New.pm.
+	  
+
 3.01  Fri May 19 2000
 	- extended documentation of Class::Classgen::Attribute
 	  including parameter specification for subroutine calls

@@ -3,10 +3,13 @@
 #
 # Michael Schlueter				15.2.2000
 
+# 3.02:
+#	No changes in here				06.07.2000
+
 
 package Class::Classgen::Section;
 
-$VERSION=3.01;
+$VERSION=3.02;
 
 	use Class::Classgen::Comments;	# to remove problems by typing errors
 
@@ -88,7 +91,7 @@ Section.pm - Identifies the diffferent sections from classgens control file.
 
 =head1 VERSION
 
-3.01
+3.02
 
 =head1 SYNOPSIS
 

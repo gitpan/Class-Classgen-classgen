@@ -3,13 +3,16 @@
 #
 # Michael Schlueter 5.3.2000		3.00
 
+# 3.02:
+#	No changes in here				06.07.2000
+
 # 3.01:
 #	removed an error from just_var. this error suppressed most of
 #	the information in the header: section.		19.5.2000
 
 package Class::Classgen::Comments;
 
-$VERSION=3.01;
+$VERSION=3.02;
 
 	use strict;
 
@@ -69,7 +72,7 @@ Comments.pm - To keep some nasty errors from users of classgen.
 
 =head1 VERSION
 
-3.01
+3.02
 
 =head1 SYNOPSIS
 
