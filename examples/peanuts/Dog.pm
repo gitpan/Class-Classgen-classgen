@@ -65,7 +65,7 @@ __END__
 
 =head1 NAME 
 
-Dog - just another Creature (Creature::Dog)
+Dog - just another Creature (Creature::Dog) (/examples).
 
 =head1 VERSION
 

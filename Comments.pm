@@ -3,6 +3,10 @@
 #
 # Michael Schlueter 5.3.2000		3.00
 
+
+# 3.03:
+#	No changes in here				02.10.2000
+
 # 3.02:
 #	No changes in here				06.07.2000
 
@@ -12,7 +16,7 @@
 
 package Class::Classgen::Comments;
 
-$VERSION=3.02;
+$VERSION=3.03;
 
 	use strict;
 
@@ -72,7 +76,7 @@ Comments.pm - To keep some nasty errors from users of classgen.
 
 =head1 VERSION
 
-3.02
+3.03
 
 =head1 SYNOPSIS
 

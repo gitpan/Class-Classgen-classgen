@@ -77,7 +77,7 @@ __END__
 
 =head1 NAME 
 
-Derived - Example how to implement Base::Derived.
+Derived - Example how to implement Base::Derived (/examples).
 
 =head1 VERSION
 

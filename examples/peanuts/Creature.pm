@@ -107,7 +107,7 @@ __END__
 
 =head1 NAME 
 
-Creature - base class for Creature::Bird and Creature::Dog .
+Creature - base class for Creature::Bird and Creature::Dog (/examples).
 
 =head1 VERSION
 

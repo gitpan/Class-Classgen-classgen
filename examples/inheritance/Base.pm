@@ -90,7 +90,7 @@ __END__
 
 =head1 NAME 
 
-Base - serves as base class for Derived (example).
+Base - serves as base class for Derived (/examples).
 
 =head1 VERSION
 

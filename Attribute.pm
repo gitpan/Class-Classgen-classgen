@@ -4,6 +4,11 @@
 # Michael Schlueter				15.2.2000	3.00
 
 
+
+# 3.03:
+#	No changes in here				02.10.2000
+
+
 # 3.02:
 #	No changes in here				06.07.2000
 
@@ -17,7 +22,7 @@
 
 package Class::Classgen::Attribute;
 
-$VERSION=3.02;
+$VERSION=3.03;
 
 	use strict;
 	use Class::Classgen::Comments;
@@ -357,7 +362,7 @@ Attribute.pm - generates all get- and set-methods for new classes created by cla
 
 =head1 VERSION
 
-3.02
+3.03
 
 =head1 SYNOPSIS
 

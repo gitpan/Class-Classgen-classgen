@@ -3,13 +3,19 @@
 #
 # Michael Schlueter				15.2.2000
 
+
+# 3.03:
+#	The failure, which caused duplicated #-lines in the header
+#	section, has been corrected.			08.12.2000
+
+
 # 3.02:
 #	No changes in here				06.07.2000
 
 
 package Class::Classgen::Section;
 
-$VERSION=3.02;
+$VERSION=3.03;
 
 	use Class::Classgen::Comments;	# to remove problems by typing errors
 
@@ -46,7 +52,12 @@ sub add {
 	}
 	my $b = Class::Classgen::Comments::just_comments($x);
 	$a =~ s/\s//g	unless( $self->get_id() =~ m/head/ );
-	push @$rl, $a.$b	if( length($a.$b) > 0 );
+	
+	if($self->get_id()=~'head') {
+		push @$rl, $a		if( length($a) > 0 );
+	} else {
+		push @$rl, $a.$b	if( length($a.$b) > 0 );
+	}
 }
 
 sub get_id {			# access Sections instance variable
@@ -91,7 +102,7 @@ Section.pm - Identifies the diffferent sections from classgens control file.
 
 =head1 VERSION
 
-3.02
+3.03
 
 =head1 SYNOPSIS
 
