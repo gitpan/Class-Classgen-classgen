@@ -1,10 +1,16 @@
 #!/usr/bin/perl -w
 
-my $VERSION='3.00';
+my $VERSION='3.01';
 
 	use strict;
 #	use diagnostics;
-	
+
+# 3.01:
+#	Comments::just_var() had a minor return-bug; led to suppressing
+#	information from header:			19.5.2000
+
+# 3.00:
+#	
 #	Removed blessing from control file 15.3.2000 Version 2.17
 #	Extended the match for : to [^:]:[^:] to allow match of 
 #	package My::Obj; both in check_of_sections() and get_sections()
@@ -225,6 +231,10 @@ sub write_methods {		# to generate all required methods for each variable
 	}
 	
 	foreach $attr (@attributes) {
+		print O $attr->write_get_h_at();
+	}
+	
+	foreach $attr (@attributes) {
 		print O $attr->write_get_keys_h();
 	}
 	
@@ -248,6 +258,10 @@ sub write_methods {		# to generate all required methods for each variable
 
 	foreach $attr (@attributes) {
 		print O $attr->write_clear_h();
+	}
+
+	foreach $attr (@attributes) {
+		print O $attr->write_delete_h_at();
 	}
 
 	foreach $attr (@attributes) {
@@ -290,7 +304,7 @@ classgen - generates class from a control file.
 
 =head1 VERSION
 
-3.00
+3.01
 
 =head1 SYNOPSIS
 
@@ -590,6 +604,10 @@ sections ( from: find_section() )
 
 =head1 BUGS
 
+A case I did not test before is putting several lines of comments after the 
+header: keyword. The current implementation of Comments::just_var() and
+Comments::just_comments() will put the same comment twice. 
+
 You should always put at least one instance-variable into your class. If you don't, you'll get a strange blessing ;-) . In most cases you probably will do so automatically, so I decided to leave this invonvenience until I know if it is worth while to re-concept classgen or not (cf. Future Plans).
 
 =head1 FILES
@@ -643,16 +661,16 @@ Please refer also to
 =over 4
 
 =item *
-perldoc New.pm
+perldoc New.pm (specifics of the created $self->new() function)
 
 =item *
-perldoc Attribute.pm
+perldoc Attribute.pm (type dependend functions)
 
 =item *
-perldoc Section.pm
+perldoc Section.pm (splitting up the control file)
 
 =item *
-perldoc Comments.pm
+perldoc Comments.pm (dealing with comments)
 
 =back
 

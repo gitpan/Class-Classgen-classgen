@@ -77,13 +77,14 @@ __END__
 
 =head1 NAME 
 
--
+Derived - Example how to implement Base::Derived.
 
 =head1 VERSION
 
 =head1 SYNOPSIS
 
 =head1 DESCRIPTION
+
 
 =head1 ENVIRONMENT
 

@@ -1,12 +1,19 @@
 # This object is used to generate the required methods for
 # instance variables found in classgens control-file.
 #
-# Michael Schlueter				15.2.2000
+# Michael Schlueter				15.2.2000	3.00
+
+# 3.01:
+#	introduced get_h_.._at($key) for direct access of internal hash
+#	19.5.2000
+#	introduced delet_h_.._at($key) to delete one specific hash element
+#	27.5.2000
+
 
 
 package Class::Classgen::Attribute;
 
-$VERSION=3.00;
+$VERSION=3.01;
 
 	use strict;
 	use Class::Classgen::Comments;
@@ -126,6 +133,21 @@ sub write_clear_l {			# generate clear() method for @lists
 	return $s;
 }
 
+sub write_delete_h_at {			# delete a specific element from %hash
+	my ($self) = @_;
+	my $s = '';
+
+	if( $self->get_type() eq '%') {
+		$s.= "sub ". $self->name('delete_h') . "_at {\n";	
+		$s.= "\tmy (\$self, \$key) = \@_;\n";
+		$s.= "\tmy \$rh = \$self->" . $self->name('get_rh') . "();\n";
+		$s.= "\tdelete \$\$rh\{\$key\};\n";
+		$s.= "}\n\n";
+	}
+	
+	return $s;
+}
+
 sub write_get {				# generate accessor method for $scalars
 	my ($self) = @_;
 	my $s = '';
@@ -164,6 +186,21 @@ sub write_get_h {			# generate accessor for %hashes
 		$s.= "\tmy (\$self) = \@_;\n";
 		$s.= "\tmy \$rh = \$self->" . $self->name('get_rh') . "();\n";
 		$s.= "\treturn \%\$rh;\n";
+		$s.= "}\n\n";
+	}
+	
+	return $s;
+}
+
+sub write_get_h_at {			# generate accessor for %hashes
+	my ($self) = @_;
+	my $s = '';
+
+	if( $self->get_type() eq '%') {
+		$s.= "sub ". $self->name('get_h') . "_at {\n";	
+		$s.= "\tmy (\$self, \$key) = \@_;\n";
+		$s.= "\tmy \$rh = \$self->" . $self->name('get_rh') . "();\n";
+		$s.= "\treturn \$\$rh\{\$key\};\n";
 		$s.= "}\n\n";
 	}
 	
@@ -316,7 +353,7 @@ Attribute.pm - generates all get- and set-methods for new classes created by cla
 
 =head1 VERSION
 
-3.00
+3.01
 
 =head1 SYNOPSIS
 
@@ -324,6 +361,20 @@ Within classgen called as:
 
 	use Attribute;			# work with object Attribute
 	my $attr = Attribute->new();	# derive a new Attribute instance $attr
+
+
+Let Ex.pm be a generated class, with internal variables $var, %entry and @list:
+
+	use Ex.pm;			# use generated class
+	my $ex=Ex->new();		# creating a new object
+	$ex->set_var('this is a test');	# setting instance variable $var
+	$ex->set_h_entry( 12, twelve );	# like $entry{12}='twelve'
+	$ex->set_h_entry( 60, sixty );	# 
+	$ex->set_l_list( 3, -100 );	# like $list[3]=-100;
+	$x=$ex->get_var();		# like $x=$var;
+	$x=$ex->get_h_entry(12);
+	@keys=$ex->get_keys_h_entry();	# get all keys of internal %entry
+etc.
 
 =head1 DESCRIPTION
 
@@ -381,17 +432,17 @@ For all $scalar instance variables in classgens control file Attribute.pm genera
 =over 4
 
 =item *
-clear_scalar: generated clear() method for $scalars
+clear_scalar(): generated clear() method for $scalars
 
 =item *
-get_scalar: generated accessor method for $scalars
+get_scalar(): generated accessor method for $scalars
 
 =item *
-set_scalar: generated manipulator for $scalars
+set_scalar($value): generated manipulator for $scalars
 
 =back
 
-Example: control file contains $var of class Example.
+=head2 Example: control file contains $var of class Example.
 
 Attribute generates clear_var(), get_var() and set_var. Class Example can be used like:
 
@@ -413,19 +464,25 @@ For all %hash instance variables in classgens control file Attribute.pm generate
 =over 4
 
 =item *
-clear_h_hash: generated clear() method for %hashes
+clear_h_hash(): generated clear() method for %hashes
 
 =item *
-get_h_hash: generated accessor for %hashes
+delete_h_hash_at($key): deletes $key from internal %hash.
 
 =item *
-get_keys_h_hash: generated key-accessor for %hashes
+get_h_hash(): generated accessor to the %hash itself
 
 =item *
-get_rh_hash: generated accessor to \%hashes
+get_h_hash_at($key): generated key-based accessor to %hash
 
 =item *
-set_h_hash: generated manipulator for %hashes
+get_keys_h_hash(): generated key-accessor for %hashes
+
+=item *
+get_rh_hash(): generated accessor to \%hashes
+
+=item *
+set_h_hash($key, $value): generated manipulator for %hashes
 
 =back
 
@@ -436,25 +493,25 @@ For all @list instance variables in classgens control file Attribute.pm generate
 =over 4
 
 =item *
-clear_l_list: generated clear() method for @lists
+clear_l_list(): generated clear() method for @lists
 
 =item *
-get_list_at: generated indexed-accessor for @lists
+get_list_at($index): generated indexed-accessor for @lists
 
 =item *
-get_l_list: generated list-accessor for @lists
+get_l_list(): generated list-accessor for @lists
 
 =item *
-get_rl_list: generated accessor to \@lists
+get_rl_list(): generated accessor to \@lists
 
 =item *
-pop_list: generated pop-accessor for @lists
+pop_list(): generated pop-accessor for @lists
 
 =item *
-push_list: generated push-manipulator for @lists
+push_list($value): generated push-manipulator for @lists
 
 =item *
-set_l_list: generated manipulator method for @lists
+set_l_list($index, $value): generated manipulator method for @lists
 
 =back
 

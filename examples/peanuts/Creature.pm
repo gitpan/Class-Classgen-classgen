@@ -107,13 +107,15 @@ __END__
 
 =head1 NAME 
 
--
+Creature - base class for Creature::Bird and Creature::Dog .
 
 =head1 VERSION
 
 =head1 SYNOPSIS
 
 =head1 DESCRIPTION
+
+Example showing inheritance.
 
 =head1 ENVIRONMENT
 

@@ -1,11 +1,15 @@
 # This package assists in handling comments from the control file
 # of classgen
 #
-# Michael Schlueter 5.3.2000
+# Michael Schlueter 5.3.2000		3.00
+
+# 3.01:
+#	removed an error from just_var. this error suppressed most of
+#	the information in the header: section.		19.5.2000
 
 package Class::Classgen::Comments;
 
-$VERSION=3.00;
+$VERSION=3.01;
 
 	use strict;
 
@@ -49,7 +53,8 @@ sub just_var {			# to extract just the variable itself
 	my ($var) = @_;		# the variable plus eventualy comments
 
 	$var =~ m/([\$\%\@]\w+)/;
-	if($1){ return $1; } else { return ''; };
+#	if($1){ return $1; } else { return ''; };	# 3.00 error !
+	if($1){ return $1; } else { return $var; };	# 3.01
 }
 
 
@@ -64,7 +69,7 @@ Comments.pm - To keep some nasty errors from users of classgen.
 
 =head1 VERSION
 
-3.00
+3.01
 
 =head1 SYNOPSIS
 

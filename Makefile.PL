@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'		=> 'Class::Classgen::classgen',
     'dist' 		=> {SUFFIX=>'gz', COMPRESS=> 'gzip '},
-    'VERSION'	 	=> '3.00',
+    'VERSION'	 	=> '3.01',
 #    'VERSION_FROM' 	=> 'classgen', # finds $VERSION,
     'EXE_FILES'		=> [ qw/ classgen / ]
 );

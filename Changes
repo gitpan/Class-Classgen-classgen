@@ -1,5 +1,14 @@
 Revision history for Perl extension Class::Classgen.
 
+3.01  Fri May 19 2000
+	- extended documentation of Class::Classgen::Attribute
+	  including parameter specification for subroutine calls
+	- get_h_.._at($key) introduced to simplify access to 
+	  internal hashes
+	- delete_h_.._at($key) to delete one specific element from internal hash
+	- Comments::just_var() corrected
+
+
 0.01  Sat Mar 18 13:07:32 2000
 	- original version; created by h2xs 1.19
 
