@@ -1,0 +1,32 @@
+Classgen-3.00						(4/2000)
+
+classgen is a script that allows you to create a Perl-object from
+a simple control-file. In the control file you basically specify
+the internal instance-variables this object should have. classgen
+then generates ASCII-source code (package) for you, which contains:
+
+	* a new() - method with the variables blessed to an {}
+	* accessor- and manipulator-methods for all these variables
+	* a specific() - method; it serves as a skelton for you to
+	  edit further object-specific methods as you need them
+	* a perldoc-skelton at the end
+
+
+This way you can fully focus on what your object should be doing. No
+need to bother around with instance-variables.
+
+To install classgen 'gunzip' and 'tar xvf' the .gz file in a directory
+of your choice. Next run from this directory:
+
+	perl Makefile.PL
+	make
+	make install (as root)
+
+There are a few examples in examples/ which include how to extend the 
+generated object for inheritance from base-classes.
+
+
+In the spirit of Rumbaugh's Object Modelling Technique (OMT),
+
+Michael Schlueter	email: mschlue@cpan.org
+
